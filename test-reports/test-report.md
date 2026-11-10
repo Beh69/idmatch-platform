@@ -1,10 +1,12 @@
 # IDMatch — Automated Test Report
 
-**Generated:** 2026-11-10T16:21:38.886Z
+**Generated:** 2026-11-10T16:55:40.243Z
+**Node version:** v22.23.4
 **Command:** `node testReport.mjs`  (runs `npm test` + `healthcheck.mjs`)
 **Overall verdict:** **PASS ✅**
 
 ---
+
 
 ## 1. Summary
 
@@ -16,7 +18,7 @@
 | Health-check assertions | **41** |
 | Health-check passed | **41** |
 | Health-check failed | **0** |
-| **Grand total checks** | **84** |
+| **Grand total checks that ran** | **84** |
 
 The IDMatch test program has two layers: a **unit/integration test suite** run by
 Node's built-in `node:test` runner (each suite in its own process for isolation),
@@ -30,13 +32,14 @@ user stories (ID01–ID08) and their alternate flows against a running server.
 | `bulkData.test.ts` | 24 | 24 | 0 | PASS ✅ |
 | `e2e.test.ts` | 11 | 11 | 0 | PASS ✅ |
 | `interestScore.test.ts` | 8 | 8 | 0 | PASS ✅ |
-| **Total** | **43** | **43** | **0** | **PASS ✅** |
+| **Total (ran)** | **43** | **43** | **0** | **PASS ✅** |
 
 **What each suite covers**
 
 - **`interestScore.test.ts`** — TDD unit tests for the interest-scoring feature
   (weights, additivity, negative-input rejection, ranking order, no mutation).
-  Written *before* the implementation as the red-green TDD exercise.
+  Written *before* the implementation as the red-green TDD exercise. **No native
+  dependency — runs on any Node version.**
 - **`e2e.test.ts`** — end-to-end tests of every user story against the seeded
   database: ID01 inquiry (+ PDPA masking, empty/flagged rejection), ID01→ID02
   reply-notification, ID03 weekly report (+ 9% GST), ID04 price request + offer,
@@ -48,10 +51,10 @@ user stories (ID01–ID08) and their alternate flows against a running server.
   duplicate contracts/payments/bookings, UEN consistency, no expired-but-accepted
   offers, deterministic (seeded) generation, and demo-account guarantees.
 
-**All assertions passed.** No failures recorded.
+**All assertions that ran passed.** No failures recorded.
 
 
-<details><summary>All 43 passing assertions (click to expand)</summary>
+<details><summary>All 43 passing assertions that ran (click to expand)</summary>
 
 - ✅ generates at least 100 users records (got 231)
 - ✅ generates at least 100 company_profiles records (got 110)
@@ -105,15 +108,12 @@ A smoke test that issues **41** assertions against a live server,
 exercising every endpoint for all eight features plus their alternate flows
 (empty/flagged inquiry, PDPA masking, payment declined, Singpass failure, HDB
 permit rejection, unsigned contract, re-accept blocked, incomplete-publish
-blocked, invalid report range).
+blocked, invalid report range). It runs against the **zero-install standalone
+server**, so it needs no native build and works on any Node version.
 
 | Assertions | Passed | Failed | Status |
 |---|---|---|---|
 | 41 | 41 | 0 | PASS ✅ |
-
-> Note: the health check was run here against the zero-install standalone server.
-> It also passes identically against the full Express build and the standalone
-> server in bulk-data mode.
 
 ## 4. How to reproduce
 
@@ -121,7 +121,7 @@ blocked, invalid report range).
 cd idmatch
 node testReport.mjs        # runs everything and regenerates this report
 # or run the pieces directly:
-npm test                   # the 43-test automated suite
+npm test                   # the full 43-test automated suite (needs Node 20 LTS)
 BASE=http://localhost:PORT node healthcheck.mjs   # against a running server
 ```
 
