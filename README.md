@@ -24,7 +24,7 @@ in bulk mode instead:
 BULK=1 node standalone.mjs        # macOS/Linux   (Windows: set BULK=1 && node standalone.mjs)
 ```
 
-Full details — including the full-build path and `npm run generate` — are in
+Full details including the full-build path and `npm run generate` — are in
 [`RUNNING.md`](./RUNNING.md).
 
 ## Stack
