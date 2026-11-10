@@ -1,0 +1,10 @@
+node_modules/
+dist/server/
+dist/shared/
+data.sqlite
+data.sqlite-wal
+data.sqlite-shm
+*.log
+
+# NOTE: dist/client is intentionally committed so the standalone server
+# (node standalone.mjs) runs with no build step.

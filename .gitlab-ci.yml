@@ -1,0 +1,53 @@
+# ---------------------------------------------------------------------------
+# GitLab CI/CD pipeline for the IDMatch platform.
+#
+# Three stages run on every push / merge request:
+#   build  -> install deps + compile (fails fast on type errors)
+#   test   -> run the automated test suite (the quality gate)
+#   deploy -> publish the standalone build as a downloadable artifact
+#
+# This mirrors the DevOps "My simple pipeline" exercise: source change ->
+# automated build -> automated tests -> automated delivery, with no manual steps.
+# ---------------------------------------------------------------------------
+image: node:22
+
+stages:
+  - build
+  - test
+  - deploy
+
+# Cache node_modules between jobs so test/deploy don't reinstall.
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build          # vite build + tsc — fails the pipeline on any type error
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+
+test:
+  stage: test
+  script:
+    - npm ci
+    - npm test               # node --test runs the 11-case e2e suite
+  # The pipeline goes red if any test fails — this is the CI quality gate.
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Packaging standalone build for distribution…"
+    - mkdir -p release
+    - cp -r standalone.mjs dist release/
+  artifacts:
+    paths:
+      - release/
+    expire_in: 1 month
+  only:
+    - main                   # only deploy from the main branch
