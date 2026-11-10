@@ -191,6 +191,7 @@ function AcceptModal({
   const [sim, setSim] = useState<Record<string, boolean>>({});
   const [step, setStep] = useState(0); // which due-diligence step we are on
   const [docs, setDocs] = useState<Record<string, string>>({}); // required doc name -> image data URL
+  const [docFiles, setDocFiles] = useState<Record<string, string>>({}); // required doc name -> original file name
   const [result, setResult] = useState<Awaited<ReturnType<typeof api.acceptOffer>> | null>(null);
   const { busy, err, setErr, run } = useAsync();
   const toggle = (k: string) => setSim((s) => ({ ...s, [k]: !s[k] }));
@@ -333,16 +334,31 @@ function AcceptModal({
                     <input
                       type="file"
                       accept="image/*"
+                      // Clear the value on click (not after change) so re-picking
+                      // the SAME file still fires onChange, while the chosen file
+                      // name stays visible in the input between selections.
+                      onClick={(e) => {
+                        (e.target as HTMLInputElement).value = "";
+                      }}
                       onChange={(e) => {
                         const file = e.target.files?.[0];
-                        e.target.value = "";
                         if (!file) return;
                         const reader = new FileReader();
-                        reader.onload = () => setDocs((d) => ({ ...d, [name]: String(reader.result) }));
+                        reader.onload = () => {
+                          setDocs((d) => ({ ...d, [name]: String(reader.result) }));
+                          setDocFiles((f) => ({ ...f, [name]: file.name }));
+                        };
                         reader.readAsDataURL(file);
                       }}
                     />
-                    {docs[name] && <img src={docs[name]} alt={name} style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 6 }} />}
+                    {docs[name] && (
+                      <>
+                        <img src={docs[name]} alt={name} style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 6 }} />
+                        <span className="muted" style={{ fontSize: 12, wordBreak: "break-all" }}>
+                          ✓ {docFiles[name] ?? "uploaded"}
+                        </span>
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
