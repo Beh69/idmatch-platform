@@ -14,7 +14,8 @@
     "dev:client": "vite",
     "build:client": "vite build",
     "build": "npm run build:client && npm run build:server",
-    "test": "tsx tests/run.ts"
+    "test": "tsx tests/run.ts",
+    "test:report": "node testReport.mjs"
   },
   "dependencies": {
     "better-sqlite3": "^11.8.1",

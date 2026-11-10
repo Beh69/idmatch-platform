@@ -1,0 +1,300 @@
+
+> idmatch-platform@1.0.0 test
+> tsx tests/run.ts
+
+
+=== Running bulkData.test.ts ===
+TAP version 13
+# Subtest: generates at least 100 users records (got 231)
+ok 1 - generates at least 100 users records (got 231)
+  ---
+  duration_ms: 0.752484
+  type: 'test'
+  ...
+# Subtest: generates at least 100 company_profiles records (got 110)
+ok 2 - generates at least 100 company_profiles records (got 110)
+  ---
+  duration_ms: 0.077752
+  type: 'test'
+  ...
+# Subtest: generates at least 100 idps records (got 246)
+ok 3 - generates at least 100 idps records (got 246)
+  ---
+  duration_ms: 0.052069
+  type: 'test'
+  ...
+# Subtest: generates at least 100 photos records (got 729)
+ok 4 - generates at least 100 photos records (got 729)
+  ---
+  duration_ms: 0.04375
+  type: 'test'
+  ...
+# Subtest: generates at least 100 reviews records (got 244)
+ok 5 - generates at least 100 reviews records (got 244)
+  ---
+  duration_ms: 0.099717
+  type: 'test'
+  ...
+# Subtest: generates at least 100 inquiries records (got 127)
+ok 6 - generates at least 100 inquiries records (got 127)
+  ---
+  duration_ms: 0.04872
+  type: 'test'
+  ...
+# Subtest: generates at least 100 notifications records (got 110)
+ok 7 - generates at least 100 notifications records (got 110)
+  ---
+  duration_ms: 0.084426
+  type: 'test'
+  ...
+# Subtest: generates at least 100 channel_prefs records (got 120)
+ok 8 - generates at least 100 channel_prefs records (got 120)
+  ---
+  duration_ms: 0.043751
+  type: 'test'
+  ...
+# Subtest: generates at least 100 price_requests records (got 173)
+ok 9 - generates at least 100 price_requests records (got 173)
+  ---
+  duration_ms: 0.170573
+  type: 'test'
+  ...
+# Subtest: generates at least 100 price_offers records (got 145)
+ok 10 - generates at least 100 price_offers records (got 145)
+  ---
+  duration_ms: 0.22292
+  type: 'test'
+  ...
+# Subtest: generates at least 100 contracts records (got 110)
+ok 11 - generates at least 100 contracts records (got 110)
+  ---
+  duration_ms: 0.064276
+  type: 'test'
+  ...
+# Subtest: generates at least 100 payments records (got 110)
+ok 12 - generates at least 100 payments records (got 110)
+  ---
+  duration_ms: 0.0386
+  type: 'test'
+  ...
+# Subtest: generates at least 100 bookings records (got 110)
+ok 13 - generates at least 100 bookings records (got 110)
+  ---
+  duration_ms: 0.02724
+  type: 'test'
+  ...
+# Subtest: generates at least 100 audit_log records (got 400)
+ok 14 - generates at least 100 audit_log records (got 400)
+  ---
+  duration_ms: 0.029789
+  type: 'test'
+  ...
+# Subtest: every photo belongs to an existing IDP (referential integrity)
+ok 15 - every photo belongs to an existing IDP (referential integrity)
+  ---
+  duration_ms: 0.327975
+  type: 'test'
+  ...
+# Subtest: every booking links to an accepted offer and real users
+ok 16 - every booking links to an accepted offer and real users
+  ---
+  duration_ms: 0.173695
+  type: 'test'
+  ...
+# Subtest: every payment applies 9% GST on its commission
+ok 17 - every payment applies 9% GST on its commission
+  ---
+  duration_ms: 0.118892
+  type: 'test'
+  ...
+# Subtest: the demo accounts (u_cust, u_desn, u_mgr) exist with correct roles
+ok 18 - the demo accounts (u_cust, u_desn, u_mgr) exist with correct roles
+  ---
+  duration_ms: 0.156841
+  type: 'test'
+  ...
+# Subtest: there are published portfolios available to browse
+ok 19 - there are published portfolios available to browse
+  ---
+  duration_ms: 0.093536
+  type: 'test'
+  ...
+# Subtest: no offer has duplicate contracts / payments / bookings
+ok 20 - no offer has duplicate contracts / payments / bookings
+  ---
+  duration_ms: 0.194333
+  type: 'test'
+  ...
+# Subtest: every designer's user UEN matches their company-profile UEN
+ok 21 - every designer's user UEN matches their company-profile UEN
+  ---
+  duration_ms: 0.121556
+  type: 'test'
+  ...
+# Subtest: no accepted offer has an expiry date in the past (expired is never accepted)
+ok 22 - no accepted offer has an expiry date in the past (expired is never accepted)
+  ---
+  duration_ms: 0.082035
+  type: 'test'
+  ...
+# Subtest: the demo accounts are guaranteed to have data for the live demo
+ok 23 - the demo accounts are guaranteed to have data for the live demo
+  ---
+  duration_ms: 0.108403
+  type: 'test'
+  ...
+# Subtest: the generator is deterministic — the same seed yields identical counts
+ok 24 - the generator is deterministic — the same seed yields identical counts
+  ---
+  duration_ms: 31.909995
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 284.498947
+
+=== Running e2e.test.ts ===
+TAP version 13
+# Subtest: seed exposes 3 roles
+ok 1 - seed exposes 3 roles
+  ---
+  duration_ms: 776.606311
+  type: 'test'
+  ...
+# Subtest: ID08 — view a published IDP increments the view count
+ok 2 - ID08 — view a published IDP increments the view count
+  ---
+  duration_ms: 8.140207
+  type: 'test'
+  ...
+# Subtest: ID01 — submit inquiry; empty + flagged are rejected
+ok 3 - ID01 — submit inquiry; empty + flagged are rejected
+  ---
+  duration_ms: 19.803976
+  type: 'test'
+  ...
+# Subtest: ID01 PDPA — contact details are masked
+ok 4 - ID01 PDPA — contact details are masked
+  ---
+  duration_ms: 5.242385
+  type: 'test'
+  ...
+# Subtest: ID01 + ID02 — designer reply triggers a customer notification
+ok 5 - ID01 + ID02 — designer reply triggers a customer notification
+  ---
+  duration_ms: 21.962604
+  type: 'test'
+  ...
+# Subtest: ID04 — price request validation + designer offer
+ok 6 - ID04 — price request validation + designer offer
+  ---
+  duration_ms: 6.652442
+  type: 'test'
+  ...
+# Subtest: ID05 — accept offer runs the full SG chain, then designer approves docs
+ok 7 - ID05 — accept offer runs the full SG chain, then designer approves docs
+  ---
+  duration_ms: 235.812268
+  type: 'test'
+  ...
+# Subtest: ID05 alt — payment declined / Singpass fail / permit fail
+ok 8 - ID05 alt — payment declined / Singpass fail / permit fail
+  ---
+  duration_ms: 413.448429
+  type: 'test'
+  ...
+# Subtest: ID07 — create IDP requires UEN/CaseTrust; happy path creates a draft
+ok 9 - ID07 — create IDP requires UEN/CaseTrust; happy path creates a draft
+  ---
+  duration_ms: 6.073992
+  type: 'test'
+  ...
+# Subtest: ID06 — preview blocks publish until complete, then publishes
+ok 10 - ID06 — preview blocks publish until complete, then publishes
+  ---
+  duration_ms: 7.813948
+  type: 'test'
+  ...
+# Subtest: ID03 — weekly report aggregates activity + 9% GST
+ok 11 - ID03 — weekly report aggregates activity + 9% GST
+  ---
+  duration_ms: 3.347973
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1679.543947
+
+=== Running interestScore.test.ts ===
+TAP version 13
+# Subtest: score of zero activity is zero
+ok 1 - score of zero activity is zero
+  ---
+  duration_ms: 0.687352
+  type: 'test'
+  ...
+# Subtest: views only are counted at the view weight
+ok 2 - views only are counted at the view weight
+  ---
+  duration_ms: 0.088904
+  type: 'test'
+  ...
+# Subtest: shortlists only are counted at the (heavier) shortlist weight
+ok 3 - shortlists only are counted at the (heavier) shortlist weight
+  ---
+  duration_ms: 0.067426
+  type: 'test'
+  ...
+# Subtest: views and shortlists combine additively
+ok 4 - views and shortlists combine additively
+  ---
+  duration_ms: 0.062002
+  type: 'test'
+  ...
+# Subtest: a shortlist outweighs a single view
+ok 5 - a shortlist outweighs a single view
+  ---
+  duration_ms: 0.160167
+  type: 'test'
+  ...
+# Subtest: negative inputs are rejected
+ok 6 - negative inputs are rejected
+  ---
+  duration_ms: 0.181484
+  type: 'test'
+  ...
+# Subtest: rankByInterest orders portfolios highest score first
+ok 7 - rankByInterest orders portfolios highest score first
+  ---
+  duration_ms: 0.648698
+  type: 'test'
+  ...
+# Subtest: rankByInterest does not mutate the input array
+ok 8 - rankByInterest does not mutate the input array
+  ---
+  duration_ms: 0.097482
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 155.062589
+
+=== Test run complete: 3 file(s), 0 failed ===
