@@ -5,7 +5,7 @@ A working full-stack web application implementing the eight user stories
 contextualised for Singapore (9% GST, Singpass/MyInfo, PayNow/NETS, PDPA,
 HDB/BCA permits, UEN/CaseTrust, ETA e-signatures, IRAS, SGD).
 
-## ▶️ Quick start (easiest — no install needed)
+## ▶️ Quick start (easiest & no install needed)
 
 1. Install [Node.js](https://nodejs.org) 18 or newer (check with `node --version`).
 2. Download this repo (green **Code** button → **Download ZIP**) and unzip it.
