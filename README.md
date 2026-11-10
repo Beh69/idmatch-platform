@@ -1,4 +1,4 @@
-# IDMatch — Interior-Design Matching Platform
+# IDMatch - Interior-Design Matching Platform
 
 A working full-stack web application implementing the eight user stories
 **ID01–ID08**, built to match the Boundary–Control–Entity (BCE) UML design and
